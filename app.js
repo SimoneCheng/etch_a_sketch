@@ -1,10 +1,9 @@
-const container = document.getElementById("container");
-
 window.onload = function() {
     makeRows(16,16);
   };
 
 // 先做一個16x16，可以畫上隨機顏色的白板
+const container = document.getElementById("container");
 function makeRows(rows, cols) {
   container.style.setProperty('--grid-rows', rows);
   container.style.setProperty('--grid-cols', cols);
@@ -23,3 +22,11 @@ function changeColor(e) {
    e.target.style.backgroundColor = `rgb(${a}, ${b}, ${c})`;
    console.log(e);
 };
+
+// RESET
+const reset = document.getElementById("reset");
+reset.addEventListener("click", () => {
+  while (container.firstChild) {container.removeChild(container.lastChild);}
+  makeRows(16,16);
+  }
+);
